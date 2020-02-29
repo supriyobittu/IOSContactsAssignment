@@ -49,18 +49,29 @@ class ContactListViewController: UIViewController {
 extension ContactListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        contactsListViewModel.numberOfSections
     }
     
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        contactsListViewModel.sectionIndexTitles
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        contactsListViewModel.titleForSection(index: section)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        contactsListViewModel.numberOfRowsInSection(index: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath) as? ContactTableViewCell else {
             return UITableViewCell()
         }
+        guard let contact = contactsListViewModel.contactForIndexPath(indexPath: indexPath) else {
+            return cell
+        }
+        cell.configure(contact: contact)
         return cell
     }
 }
@@ -80,6 +91,5 @@ extension ContactListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

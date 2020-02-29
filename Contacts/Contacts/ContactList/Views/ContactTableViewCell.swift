@@ -34,4 +34,12 @@ class ContactTableViewCell: UITableViewCell {
         self.contactImageView.clipsToBounds = true
     }
     
+    func configure(contact: Contact) {
+        contactImageView.image = contact.profileImage ??
+            UIImage(named: "missing")!
+        contactName.text = contact.firstName! + " " + contact.lastName!
+        favoriteImageView.isHidden = !contact.favorite
+        favoriteImageView.image = UIImage(named: "HomeFavourite")
+    }
+    
 }
