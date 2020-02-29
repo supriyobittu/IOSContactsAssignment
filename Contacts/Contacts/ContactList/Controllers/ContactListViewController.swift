@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ContactViewDelegate {
+    func updateRowAtIndexPath(indexPath: IndexPath)
+}
+
 class ContactListViewController: UIViewController {
     @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var contactsListViewModel: ContactsListViewModelProtocol!
     
     required init?(coder: NSCoder) {
+        self.contactsListViewModel = ContactsListViewModel(model: [])
         super.init(coder: coder)
     }
     
