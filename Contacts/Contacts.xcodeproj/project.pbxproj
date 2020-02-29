@@ -14,6 +14,7 @@
 		64395BF1240AA9BF00C971F6 /* ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395BF0240AA9BF00C971F6 /* ContactsTests.swift */; };
 		64395BFC240AA9BF00C971F6 /* ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395BFB240AA9BF00C971F6 /* ContactsUITests.swift */; };
 		64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C0E240AAC2C00C971F6 /* ContactListViewController.swift */; };
+		64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C11240AB61300C971F6 /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		64395BFB240AA9BF00C971F6 /* ContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsUITests.swift; sourceTree = "<group>"; };
 		64395BFD240AA9BF00C971F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64395C0E240AAC2C00C971F6 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		64395C11240AB61300C971F6 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		64395C0C240AABC300C971F6 /* ContactList */ = {
 			isa = PBXGroup;
 			children = (
+				64395C10240AB5E100C971F6 /* Views */,
 				64395C0D240AABEE00C971F6 /* Controllers */,
 			);
 			path = ContactList;
@@ -147,6 +150,14 @@
 				64395C0E240AAC2C00C971F6 /* ContactListViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		64395C10240AB5E100C971F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64395C11240AB61300C971F6 /* ContactTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */,
 				64395BDA240AA9BC00C971F6 /* AppDelegate.swift in Sources */,
 				64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */,
 			);
