@@ -97,4 +97,20 @@ class ContactsListViewModelTests: XCTestCase {
         
         XCTAssertEqual(actual?.firstName, expected.firstName)
     }
+    
+    func testGetContactsCallsFetchRequestOnContactService() {
+        contactsListViewModel = ContactsListViewModel(model: [], NetworkClientStub.shared)
+        
+        contactsListViewModel.getContacts(completion: nil)
+        
+        XCTAssertTrue(NetworkClientStub.shared.executeMethodCalled)
+    }
+    
+    func testGetContactWithIdCallsFetchRequestOnContactService() {
+        contactsListViewModel = ContactsListViewModel(model: [], NetworkClientStub.shared)
+        
+        contactsListViewModel.getContact(id: 123, completion: nil)
+        
+        XCTAssertTrue(NetworkClientStub.shared.executeMethodCalled)
+    }
 }

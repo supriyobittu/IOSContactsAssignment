@@ -15,6 +15,15 @@ struct Constants {
         static let timeout: TimeInterval = 60
     }
     
+    struct AletButtonTitle {
+        static let OK = "OK"
+    }
+    
+    struct AlertMessages {
+        static let serviceError = "Sorry! Try again later."
+        static let validationError = "Please fill all the mandatory fields."
+    }
+    
     struct Color {
         static let navBarColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
     }

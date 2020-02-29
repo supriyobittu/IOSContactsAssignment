@@ -24,6 +24,7 @@
 		64395C27240AE9B900C971F6 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C26240AE9B900C971F6 /* NetworkClient.swift */; };
 		64395C29240AEA4C00C971F6 /* MockContacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 64395C28240AEA4C00C971F6 /* MockContacts.json */; };
 		64395C2C240AEF6700C971F6 /* ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C2B240AEF6700C971F6 /* ContactServiceTests.swift */; };
+		64395C2F240AFA2800C971F6 /* UIAlertViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C2E240AFA2800C971F6 /* UIAlertViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		64395C26240AE9B900C971F6 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		64395C28240AEA4C00C971F6 /* MockContacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MockContacts.json; path = "../../../../GoJEk/Gojek-Assignment/Gojek-Assignment/Contacts/Contacts/MockContacts.json"; sourceTree = "<group>"; };
 		64395C2B240AEF6700C971F6 /* ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServiceTests.swift; sourceTree = "<group>"; };
+		64395C2E240AFA2800C971F6 /* UIAlertViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		64395BD8240AA9BC00C971F6 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				64395C2D240AFA0300C971F6 /* Extensions */,
 				64395C21240AE8DF00C971F6 /* Network */,
 				64395C20240AE8D300C971F6 /* Utilities */,
 				64395C0C240AABC300C971F6 /* ContactList */,
@@ -249,6 +252,14 @@
 				64395C2B240AEF6700C971F6 /* ContactServiceTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		64395C2D240AFA0300C971F6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				64395C2E240AFA2800C971F6 /* UIAlertViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +399,7 @@
 				64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */,
 				64395C25240AE96E00C971F6 /* ContactService.swift in Sources */,
 				64395BDA240AA9BC00C971F6 /* AppDelegate.swift in Sources */,
+				64395C2F240AFA2800C971F6 /* UIAlertViewControllerExtension.swift in Sources */,
 				64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */,
 				64395C23240AE90400C971F6 /* Constants.swift in Sources */,
 				64395C27240AE9B900C971F6 /* NetworkClient.swift in Sources */,

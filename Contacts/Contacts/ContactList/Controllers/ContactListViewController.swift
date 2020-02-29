@@ -26,6 +26,7 @@ class ContactListViewController: UIViewController {
         super.viewDidLoad()
         self.contactsTableView.tableFooterView = UIView()
         self.contactsTableView.sectionIndexBackgroundColor = .clear
+        getAllContacts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +36,21 @@ class ContactListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    fileprivate func getAllContacts() {
+        self.activityIndicator.startAnimating()
+        contactsListViewModel.getContacts { [unowned self] (error) in
+            if error != nil {
+                UIAlertController.show(Constants.AlertMessages.serviceError, from: self, completion: { (action) in
+                    self.activityIndicator.stopAnimating()
+                    self.getAllContacts()
+                })
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.contactsTableView.reloadData()
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

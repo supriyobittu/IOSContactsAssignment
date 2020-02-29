@@ -16,15 +16,20 @@ protocol ContactsListViewModelProtocol {
     func titleForSection(index: Int) -> String
     func numberOfRowsInSection(index: Int) -> Int
     func contactForIndexPath(indexPath: IndexPath) -> Contact?
+    func getContacts(completion: ((Error?) -> Void)?)
+    func getContact(id: Int, completion: ((Contact?, Error?) -> Void)?)
 }
 
 class ContactsListViewModel: ContactsListViewModelProtocol {
      var indexedContacts: [String: [Contact]] = Dictionary<String, [Contact]>()
+     private var contactService: ContactService
      var delegate: ContactViewDelegate?
 
-     init(model: [Contact]) {
+     init(model: [Contact],_ networkClient: NetworkClientProtocol = NetworkClient.shared) {
+         contactService = ContactService(networkClient: networkClient)
          arrangeContactsInGroups(contacts: model)
      }
+     
      
      private func arrangeContactsInGroups(contacts: [Contact]) {
          contacts.forEach { (contact) in
@@ -79,4 +84,25 @@ class ContactsListViewModel: ContactsListViewModelProtocol {
          }
          return contactsForIndex[indexPath.row]
      }
+    
+    func getContacts(completion : ((Error?) -> Void)?) {
+        contactService.request(serviceType: .getContacts, model: [Contact].self) { [unowned self]
+            (newContacts, response, error) in
+            if error == nil {
+                self.indexedContacts.removeAll()
+                self.arrangeContactsInGroups(contacts: newContacts ?? [])
+            }
+            if completion != nil {
+                completion!(error)
+            }
+        }
+    }
+    
+    func getContact(id: Int, completion: ((Contact?, Error?) -> Void)?) {
+        contactService.request(serviceType: .getContact(id: id), model: Contact.self) { (data, response, error) in
+            if completion != nil {
+                completion!(data, error)
+            }
+        }
+    }
 }
