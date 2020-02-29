@@ -15,6 +15,7 @@
 		64395BFC240AA9BF00C971F6 /* ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395BFB240AA9BF00C971F6 /* ContactsUITests.swift */; };
 		64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C0E240AAC2C00C971F6 /* ContactListViewController.swift */; };
 		64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C11240AB61300C971F6 /* ContactTableViewCell.swift */; };
+		64395C16240AC15000C971F6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C15240AC15000C971F6 /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		64395BFD240AA9BF00C971F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64395C0E240AAC2C00C971F6 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		64395C11240AB61300C971F6 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		64395C15240AC15000C971F6 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,8 @@
 		64395C0C240AABC300C971F6 /* ContactList */ = {
 			isa = PBXGroup;
 			children = (
+				64395C14240AC0B300C971F6 /* View Models */,
+				64395C13240AC09500C971F6 /* Models */,
 				64395C10240AB5E100C971F6 /* Views */,
 				64395C0D240AABEE00C971F6 /* Controllers */,
 			);
@@ -158,6 +162,21 @@
 				64395C11240AB61300C971F6 /* ContactTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		64395C13240AC09500C971F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64395C15240AC15000C971F6 /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		64395C14240AC0B300C971F6 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64395C16240AC15000C971F6 /* Contact.swift in Sources */,
 				64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */,
 				64395BDA240AA9BC00C971F6 /* AppDelegate.swift in Sources */,
 				64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */,
@@ -468,6 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Contacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,7 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Contacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,6 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Contacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Contacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
