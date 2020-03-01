@@ -28,6 +28,8 @@
 		64395C31240B8BB000C971F6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C30240B8BAF00C971F6 /* GradientView.swift */; };
 		64395C37240B8CF100C971F6 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C36240B8CF100C971F6 /* ContactDetailsViewController.swift */; };
 		64395C39240B92AB00C971F6 /* ContactDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C38240B92AB00C971F6 /* ContactDetailTableViewCell.swift */; };
+		64395C3D240BF0A200C971F6 /* ContactDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C3C240BF0A200C971F6 /* ContactDetailsViewModel.swift */; };
+		64395C40240BF30400C971F6 /* ContactDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C3F240BF30400C971F6 /* ContactDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		64395C30240B8BAF00C971F6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		64395C36240B8CF100C971F6 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		64395C38240B92AB00C971F6 /* ContactDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableViewCell.swift; sourceTree = "<group>"; };
+		64395C3C240BF0A200C971F6 /* ContactDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewModel.swift; sourceTree = "<group>"; };
+		64395C3F240BF30400C971F6 /* ContactDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				64395C2A240AEF5500C971F6 /* Network */,
-				64395C1C240ACCCD00C971F6 /* ContactList */,
 				64395C19240ACC2600C971F6 /* Builders */,
+				64395C3E240BF2C400C971F6 /* Contact Details */,
+				64395C1C240ACCCD00C971F6 /* ContactList */,
 				64395BF0240AA9BF00C971F6 /* ContactsTests.swift */,
 				64395BF2240AA9BF00C971F6 /* Info.plist */,
 			);
@@ -299,8 +304,17 @@
 		64395C35240B8C9800C971F6 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				64395C3C240BF0A200C971F6 /* ContactDetailsViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		64395C3E240BF2C400C971F6 /* Contact Details */ = {
+			isa = PBXGroup;
+			children = (
+				64395C3F240BF30400C971F6 /* ContactDetailsViewModelTests.swift */,
+			);
+			path = "Contact Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +454,7 @@
 				64395C31240B8BB000C971F6 /* GradientView.swift in Sources */,
 				64395C12240AB61300C971F6 /* ContactTableViewCell.swift in Sources */,
 				64395C25240AE96E00C971F6 /* ContactService.swift in Sources */,
+				64395C3D240BF0A200C971F6 /* ContactDetailsViewModel.swift in Sources */,
 				64395BDA240AA9BC00C971F6 /* AppDelegate.swift in Sources */,
 				64395C39240B92AB00C971F6 /* ContactDetailTableViewCell.swift in Sources */,
 				64395C2F240AFA2800C971F6 /* UIAlertViewControllerExtension.swift in Sources */,
@@ -455,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64395C2C240AEF6700C971F6 /* ContactServiceTests.swift in Sources */,
+				64395C40240BF30400C971F6 /* ContactDetailsViewModelTests.swift in Sources */,
 				64395C1B240ACC8A00C971F6 /* ContactBuilder.swift in Sources */,
 				64395BF1240AA9BF00C971F6 /* ContactsTests.swift in Sources */,
 				64395C1F240ACD2200C971F6 /* ContactsListViewModelTests.swift in Sources */,

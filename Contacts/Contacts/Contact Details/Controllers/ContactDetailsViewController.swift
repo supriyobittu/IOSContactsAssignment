@@ -25,6 +25,8 @@ class ContactDetailsViewController: UIViewController {
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var detailsTableView: UITableView!
+    
+    var contactDetailsViewModel: ContactDetailsViewModelProtocol!
     var imagePicker = UIImagePickerController()
     weak var activeTF: UITextField?
 
