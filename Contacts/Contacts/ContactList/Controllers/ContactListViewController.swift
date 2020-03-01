@@ -12,6 +12,8 @@ protocol ContactViewDelegate {
     func updateRowAtIndexPath(indexPath: IndexPath)
 }
 
+let showContactDetailsIdentifier = "showContactDetails"
+
 class ContactListViewController: UIViewController {
     @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -54,11 +56,17 @@ class ContactListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == showContactDetailsIdentifier {
+            let contactDetailsVC = segue.destination as! ContactDetailsViewController
+            //contactDetailsVC.contactDetailsViewModel = ContactDetailsViewModel(contact: sender as? Contact)
+        }
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        
+        let contactDetailsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ContactDetailsController") as! ContactDetailsViewController
+        let navigationController = UINavigationController(rootViewController: contactDetailsVC)
+
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
 
@@ -107,5 +115,20 @@ extension ContactListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let mainContact = contactsListViewModel.contactForIndexPath(indexPath: indexPath) {
+            self.activityIndicator.startAnimating()
+            self.view.isUserInteractionEnabled = false
+            contactsListViewModel.getContact(id: mainContact.id!) { (contact, error) in
+                mainContact.phoneNumber = contact?.phoneNumber
+                mainContact.email = contact?.email
+                self.activityIndicator.stopAnimating()
+                self.view.isUserInteractionEnabled = true
+                if contact != nil {
+                    self.performSegue(withIdentifier: showContactDetailsIdentifier, sender: mainContact)
+                } else {
+                    UIAlertController.show(Constants.AlertMessages.serviceError, from: self, completion: nil)
+                }
+            }
+        }
     }
 }
