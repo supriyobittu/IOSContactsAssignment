@@ -36,6 +36,7 @@ class ContactDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         detailsTableView.tableFooterView = UIView()
         profilePicImageView.layer.cornerRadius = self.profilePicImageView.bounds.height/2
         profilePicImageView.clipsToBounds = true
@@ -48,10 +49,10 @@ class ContactDetailsViewController: UIViewController {
         }
         navigationController?.navigationBar.tintColor = Constants.Color.navBarColor
         
+        renderDataOnView()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:)))
         view.addGestureRecognizer(tapGesture)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +81,10 @@ class ContactDetailsViewController: UIViewController {
                                              style: .plain,
                                              target: self,
                                              action: #selector(editButtonTapped(_:)))
+                
+        rightBarButton.tag = contactDetailsViewModel.isInEditMode ? 1 : 0
+        rightBarButton.title = contactDetailsViewModel.isInEditMode ? Constants.BarButtonTitle.DONE : Constants.BarButtonTitle.EDIT
+        cameraButton.isHidden = contactDetailsViewModel.isInEditMode ? false : true
         
         navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -101,11 +106,20 @@ class ContactDetailsViewController: UIViewController {
         navigationItem.rightBarButtonItem = doneBarButtonItem
     }
     
+    func renderDataOnView() {
+        self.profilePicImageView.image = contactDetailsViewModel.profileImage
+        self.fullNameLbl.text = contactDetailsViewModel.fullName
+        if contactDetailsViewModel.isFavourite {
+            self.favoriteButton.isSelected = true
+        } else {
+            self.favoriteButton.isSelected = false
+        }
+    }
 }
 
 extension ContactDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        contactDetailsViewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,10 +127,38 @@ extension ContactDetailsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.textFieldDelegate = self
+        cell.configure(viewModel: contactDetailsViewModel, indexPath: indexPath)
         return cell
     }
 }
 
+// Menu Actions
+extension ContactDetailsViewController {
+    
+    @IBAction func messageButtonTapped(_ sender: UIButton) {
+        guard  let messageURL = contactDetailsViewModel.messageURL else {
+            UIAlertController.show("Contact number not valid.", from: self, completion: nil)
+            return
+        }
+        UIApplication.shared.open(messageURL, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func callButtonTapped(_ sender: UIButton) {
+        guard  let telURL = contactDetailsViewModel.telURL else {
+            UIAlertController.show("Contact number not valid.", from: self, completion: nil)
+            return
+        }
+        UIApplication.shared.open(telURL, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func emailButtonTapped(_ sender: UIButton) {
+        guard  let mailURL = contactDetailsViewModel.mailURL else {
+            UIAlertController.show("Contact email not valid.", from: self, completion: nil)
+            return
+        }
+        UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
+    }
+}
 
 //Button Actions
 extension ContactDetailsViewController {
@@ -126,11 +168,21 @@ extension ContactDetailsViewController {
     }
     
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
-        
+        contactDetailsViewModel.makeContactFavourite()
+        renderDataOnView()
     }
     
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
-        
+        if sender.tag == 0 { // Edit button clicked
+            toggleEditButton(sender, true)
+            contactDetailsViewModel.isInEditMode = true
+        } else { // Done button clicked
+            toggleEditButton(sender, false)
+            contactDetailsViewModel.updateContactDetails()
+            contactDetailsViewModel.isInEditMode = false
+        }
+        detailsTableView.reloadData()
+        renderDataOnView()
     }
     
     @objc func cancelButtonClicked(_ sender: UIButton) {
@@ -138,7 +190,14 @@ extension ContactDetailsViewController {
     }
     
     @objc func doneButtonClicked(_ sender: UIButton) {
-        
+        self.view.endEditing(true)
+        let success = contactDetailsViewModel.isContactValid()
+        if success {
+            contactDetailsViewModel.createContactDetails()
+            dismiss(animated: true, completion: nil)
+        } else {
+            UIAlertController.show(Constants.AlertMessages.validationError, from: self, completion: nil)
+        }
     }
     
     fileprivate func toggleEditButton(_ button: UIBarButtonItem, _ editClicked: Bool) {
@@ -151,7 +210,6 @@ extension ContactDetailsViewController {
         self.fullNameLbl.isHidden = editClicked
     }
 }
-
 
 // Keyboard Related Events
 extension ContactDetailsViewController: TextFieldScrollViewDelegate {

@@ -16,6 +16,7 @@ class ContactDetailTableViewCell: UITableViewCell {
     var textFieldDelegate: TextFieldScrollViewDelegate?
     
     static let identifier = "ContactDetailTableViewCell"
+    private var contactDetailsViewModel: ContactDetailsViewModelProtocol!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,10 +27,29 @@ class ContactDetailTableViewCell: UITableViewCell {
         valueTF.delegate = self
     }
 
+    func configure(viewModel: ContactDetailsViewModelProtocol, indexPath: IndexPath) {
+        contactDetailsViewModel = viewModel
+        let detailsData = viewModel.keyValuePairForContactDetailAtIndexPath(indexPath: indexPath)
+        titleLbl.text =  detailsData.0
+        valueTF.text = detailsData.1
+        valueTF.placeholder = detailsData.2
+        
+        if contactDetailsViewModel.isInEditMode {
+            valueTF.isEnabled = true
+        } else {
+            valueTF.isEnabled = false
+        }
+        if titleLbl.text == Constants.ContactDetailKeys.mobile {
+            valueTF.keyboardType = .numberPad
+        } else {
+            valueTF.keyboardType = .default
+        }
+    }
 }
 
 extension ContactDetailTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        contactDetailsViewModel.saveForTitle(titleLbl.text ?? "", value: textField.text ?? "")
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

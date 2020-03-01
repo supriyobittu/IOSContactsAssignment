@@ -30,6 +30,7 @@
 		64395C39240B92AB00C971F6 /* ContactDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C38240B92AB00C971F6 /* ContactDetailTableViewCell.swift */; };
 		64395C3D240BF0A200C971F6 /* ContactDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C3C240BF0A200C971F6 /* ContactDetailsViewModel.swift */; };
 		64395C40240BF30400C971F6 /* ContactDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C3F240BF30400C971F6 /* ContactDetailsViewModelTests.swift */; };
+		64395C42240C00FB00C971F6 /* ContactDetailsViewController+ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64395C41240C00FB00C971F6 /* ContactDetailsViewController+ImageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		64395C38240B92AB00C971F6 /* ContactDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableViewCell.swift; sourceTree = "<group>"; };
 		64395C3C240BF0A200C971F6 /* ContactDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewModel.swift; sourceTree = "<group>"; };
 		64395C3F240BF30400C971F6 /* ContactDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		64395C41240C00FB00C971F6 /* ContactDetailsViewController+ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactDetailsViewController+ImageController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				64395C36240B8CF100C971F6 /* ContactDetailsViewController.swift */,
+				64395C41240C00FB00C971F6 /* ContactDetailsViewController+ImageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				64395C37240B8CF100C971F6 /* ContactDetailsViewController.swift in Sources */,
 				64395C0F240AAC2C00C971F6 /* ContactListViewController.swift in Sources */,
 				64395C23240AE90400C971F6 /* Constants.swift in Sources */,
+				64395C42240C00FB00C971F6 /* ContactDetailsViewController+ImageController.swift in Sources */,
 				64395C27240AE9B900C971F6 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

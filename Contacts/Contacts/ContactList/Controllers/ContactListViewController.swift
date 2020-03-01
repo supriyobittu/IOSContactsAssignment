@@ -58,12 +58,14 @@ class ContactListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showContactDetailsIdentifier {
             let contactDetailsVC = segue.destination as! ContactDetailsViewController
-            //contactDetailsVC.contactDetailsViewModel = ContactDetailsViewModel(contact: sender as? Contact)
+            contactDetailsVC.contactDetailsViewModel = ContactDetailsViewModel(contact: sender as? Contact)
         }
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
         let contactDetailsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ContactDetailsController") as! ContactDetailsViewController
+        contactDetailsVC.contactDetailsViewModel = ContactDetailsViewModel(contact: Contact(id: 0))
+        contactDetailsVC.contactDetailsViewModel.isInEditMode = true
         let navigationController = UINavigationController(rootViewController: contactDetailsVC)
 
         self.present(navigationController, animated: true, completion: nil)
