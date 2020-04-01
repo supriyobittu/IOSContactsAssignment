@@ -72,7 +72,7 @@
 		64395C22240AE90400C971F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		64395C24240AE96E00C971F6 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		64395C26240AE9B900C971F6 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		64395C28240AEA4C00C971F6 /* MockContacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MockContacts.json; path = "../../../../GoJEk/Gojek-Assignment/Gojek-Assignment/Contacts/Contacts/MockContacts.json"; sourceTree = "<group>"; };
+		64395C28240AEA4C00C971F6 /* MockContacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockContacts.json; sourceTree = "<group>"; };
 		64395C2B240AEF6700C971F6 /* ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServiceTests.swift; sourceTree = "<group>"; };
 		64395C2E240AFA2800C971F6 /* UIAlertViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertViewControllerExtension.swift; sourceTree = "<group>"; };
 		64395C30240B8BAF00C971F6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
