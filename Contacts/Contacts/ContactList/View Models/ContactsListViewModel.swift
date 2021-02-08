@@ -91,9 +91,18 @@ class ContactsListViewModel: ContactsListViewModelProtocol {
             if error == nil {
                 self.indexedContacts.removeAll()
                 self.arrangeContactsInGroups(contacts: newContacts ?? [])
+                completion!(nil)
             }
-            if completion != nil {
-                completion!(error)
+            if response == nil {
+                do {
+                    self.indexedContacts.removeAll()
+                    let contact = MockJsonFile.contacts.content
+                    let contacts = try JSONDecoder().decode([Contact].self, from: contact ?? Data())
+                    self.arrangeContactsInGroups(contacts: contacts)
+                    completion!(nil)
+                } catch let errorResponse {
+                    completion!(errorResponse)
+                } 
             }
         }
     }
