@@ -53,7 +53,7 @@ enum MockJsonFile: String {
         }
         
         do {
-            let data = try Data(contentsof: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             return data
         } catch {
             return nil
