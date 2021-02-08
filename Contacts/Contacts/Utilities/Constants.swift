@@ -41,3 +41,23 @@ struct Constants {
         static let navBarColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
     }
 }
+
+
+enum MockJsonFile: String {
+    case contacts = "MockContacts"
+    case contactDetails = "contactDetails"
+    
+    var content: Data? {
+        guard let path = Bundle(for: NetworkClient.self).path(forResource: self.rawValue, ofType: "json") else {
+            return nil
+        }
+        
+        do {
+            let data = try Data(contentsof: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            return data
+        } catch {
+            return nil
+        }                                                   
+    }
+    
+}    
