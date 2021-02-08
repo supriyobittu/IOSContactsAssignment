@@ -109,8 +109,17 @@ class ContactsListViewModel: ContactsListViewModelProtocol {
     
     func getContact(id: Int, completion: ((Contact?, Error?) -> Void)?) {
         contactService.request(serviceType: .getContact(id: id), model: Contact.self) { (data, response, error) in
-            if completion != nil {
-                completion!(data, error)
+            if error == nil {
+                completion!(data,error)
+            }
+            if response == nil {
+                do {
+                    let contact = MockJsonFile.contacts.content
+                    let contacts = try JSONDecoder().decode([Contact].self, from: contact ?? Data())
+                    completion!(contacts.first, nil)
+                } catch let errorResponse {
+                    completion!(nil,errorResponse)
+                } 
             }
         }
     }
